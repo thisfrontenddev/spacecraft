@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { FeedScreen } from "./src/screens/FeedScreen";
 import { StorybookUIRoot } from "./storybook";
 
-const SHOW_STORYBOOK = true;
+const SHOW_STORYBOOK = process.env.SHOW_STORYBOOK || false;
 const queryClient = new QueryClient();
 
 const App = () => {
