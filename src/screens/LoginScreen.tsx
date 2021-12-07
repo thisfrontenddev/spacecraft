@@ -1,13 +1,27 @@
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import Constants from "expo-constants";
 import * as React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { Header } from "../components/Header";
 import { PasswordInput } from "../components/PasswordInput";
+import { AppRoutes } from "../navigation/AppRoutes";
+import type { RootStackParamList } from "../navigation/Navigator";
+
+type LoginScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  AppRoutes.LOGIN_SCREEN
+>;
 
 export function LoginScreen() {
+  const navigation = useNavigation<LoginScreenNavigationProp>();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+
+  const handleTermsTap = () => {
+    navigation.navigate(AppRoutes.TERMS_SCREEN);
+  };
 
   return (
     <View style={styles.container}>
@@ -30,6 +44,9 @@ export function LoginScreen() {
           />
         </View>
         <Button mode="contained">Login</Button>
+        <Pressable onPress={handleTermsTap}>
+          <Text style={styles.termsLink}>Terms and conditions</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -48,5 +65,10 @@ const styles = StyleSheet.create({
   },
   input: {
     marginBottom: 20,
+  },
+  termsLink: {
+    color: "#a8a8a8",
+    padding: 20,
+    textAlign: "center",
   },
 });

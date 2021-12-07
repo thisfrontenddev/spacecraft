@@ -1,7 +1,7 @@
 import React from "react";
 import { NetworkProvider } from "react-native-offline";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { FeedScreen } from "./src/screens/FeedScreen";
+import { Navigator } from "./src/navigation/Navigator";
 import { StorybookUIRoot } from "./storybook";
 
 const SHOW_STORYBOOK = process.env.SHOW_STORYBOOK || false;
@@ -15,9 +15,7 @@ const App = () => {
   return (
     <NetworkProvider>
       <QueryClientProvider client={queryClient}>
-        {/* <LoginScreen /> */}
-        {/* <TermsScreen /> */}
-        <FeedScreen />
+        <Navigator />
       </QueryClientProvider>
     </NetworkProvider>
   );
