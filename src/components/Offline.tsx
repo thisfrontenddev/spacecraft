@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { useIsConnected } from "react-native-offline";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
-const Offline = () => {
+export const Offline = () => {
   // Use the useIsConnected hook
   const isConnected = useIsConnected();
 
@@ -19,8 +19,6 @@ const Offline = () => {
     </SafeAreaView>
   );
 };
-
-export default Offline;
 
 const styles = StyleSheet.create({
   root: {

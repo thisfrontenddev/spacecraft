@@ -2,10 +2,10 @@ import Constants from "expo-constants";
 import * as React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Button, TextInput } from "react-native-paper";
-import Header from "../components/Header";
-import PasswordInput from "../components/PasswordInput";
+import { Header } from "../components/Header";
+import { PasswordInput } from "../components/PasswordInput";
 
-export default function App() {
+export function LoginScreen() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -41,14 +41,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingTop: Constants.statusBarHeight,
     backgroundColor: "#ecf0f1",
-  },
-  headline: {
-    flexGrow: 1,
-    alignItems: "center",
-    textAlign: "center",
-    flexDirection: "row",
-    color: "#FFF",
-    backgroundColor: "blue",
   },
   content: {
     flexGrow: 3,

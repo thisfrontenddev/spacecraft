@@ -1,0 +1,6 @@
+{
+  "extends": ["react-native-wcandillon"],
+  "rules": {
+    "import/order": ["error", { "newlines-between": "ignore" }]
+  }
+}

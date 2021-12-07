@@ -1,16 +1,15 @@
 import React from "react";
-import { StyleSheet, View, ViewProps } from "react-native";
+import type { ViewProps } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Headline } from "react-native-paper";
 
-const Header: React.FC<ViewProps> = ({ children }) => {
+export const Header: React.FC<ViewProps> = ({ children }) => {
   return (
     <View style={[styles.headline]}>
       <Headline style={styles.text}>{children}</Headline>
     </View>
   );
 };
-
-export default Header;
 
 const styles = StyleSheet.create({
   headline: {

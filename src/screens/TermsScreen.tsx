@@ -2,13 +2,13 @@ import React from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 import { Appbar, Title } from "react-native-paper";
 
-const TermsScreen = () => {
-  function goBack() {
-    // We need to use the screen props `{navigation}` to navigate back
-    // it will be introduced in the next lesson `react-navigation`
-    alert("goBack pressed!");
-  }
+function goBack() {
+  // We need to use the screen props `{navigation}` to navigate back
+  // it will be introduced in the next lesson `react-navigation`
+  console.log("goBack pressed!");
+}
 
+export const TermsScreen = () => {
   return (
     <View>
       <Appbar.Header>
@@ -106,5 +106,3 @@ const TermsScreen = () => {
     </View>
   );
 };
-
-export default TermsScreen;

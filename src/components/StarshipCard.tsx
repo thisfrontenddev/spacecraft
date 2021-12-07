@@ -1,13 +1,14 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Button, Card, Paragraph, Title } from "react-native-paper";
+
 type Props = {
   starship: Record<
     "name" | "model" | "crew" | "hyperdrive_rating" | "cost_in_credits",
     string | number | undefined
   >;
 };
-const StarshipCard: React.FC<Props> = ({ starship }) => {
+export const StarshipCard: React.FC<Props> = ({ starship }) => {
   return (
     <Card style={styles.card}>
       <Card.Title title={starship.name} subtitle={starship.model} />
@@ -22,8 +23,6 @@ const StarshipCard: React.FC<Props> = ({ starship }) => {
     </Card>
   );
 };
-
-export default StarshipCard;
 
 const styles = StyleSheet.create({
   card: {

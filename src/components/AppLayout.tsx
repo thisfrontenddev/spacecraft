@@ -2,15 +2,17 @@ import React from "react";
 import { SafeAreaView, ScrollView, StatusBar, StyleSheet } from "react-native";
 import { useIsConnected } from "react-native-offline";
 import { Headline } from "react-native-paper";
-import Offline from "./Offline";
+import { Offline } from "./Offline";
 
 type Props = {
   title: string;
 };
 
-const AppLayout: React.FC<Props> = ({ children, title }) => {
+export const AppLayout: React.FC<Props> = ({ children, title }) => {
   const isConnected = useIsConnected();
-  if (isConnected) return <Offline />;
+  if (isConnected) {
+    return <Offline />;
+  }
 
   return (
     <SafeAreaView style={styles.root}>
@@ -36,5 +38,3 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 });
-
-export default AppLayout;
