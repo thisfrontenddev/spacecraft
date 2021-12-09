@@ -1,11 +1,22 @@
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
 import { FlatList, SafeAreaView, StyleSheet, Text } from "react-native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 import { AppLayout } from "../components/AppLayout";
 import { StarshipCard } from "../components/StarshipCard";
+import type { Starship, Starships } from "../hooks/useStarships";
 import { useStarships } from "../hooks/useStarships";
+import { AppRoutes } from "../navigation/AppRoutes";
+import type { RootStackParamList } from "../navigation/Navigator";
 
-export const FeedScreen = () => {
+type StarshipFeedScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  AppRoutes.STARSHIP_FEED_SCREEN
+>;
+
+export const StarshipFeedScreen = () => {
+  const navigation = useNavigation<StarshipFeedScreenNavigationProp>();
   const { data, isLoading, isError } = useStarships();
 
   if (isError) {
@@ -24,12 +35,17 @@ export const FeedScreen = () => {
     );
   }
 
+  const handlePress = (starship: Starship) => () =>
+    navigation.navigate(AppRoutes.STARSHIP_DETAIL_SCREEN, { starship });
+
   return (
     <AppLayout title="Starships">
       <FlatList
-        data={data?.results}
-        renderItem={({ item }) => <StarshipCard starship={item} />}
-        keyExtractor={(item) => item.name}
+        data={data?.results as Starships}
+        renderItem={({ item: starship }) => (
+          <StarshipCard onPress={handlePress(starship)} starship={starship} />
+        )}
+        keyExtractor={(starship) => starship.name as string}
       />
     </AppLayout>
   );

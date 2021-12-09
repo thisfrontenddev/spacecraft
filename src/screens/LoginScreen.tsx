@@ -19,6 +19,10 @@ export function LoginScreen() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
+  const handleLoginTap = () => {
+    navigation.navigate(AppRoutes.STARSHIP_FEED_SCREEN);
+  };
+
   const handleTermsTap = () => {
     navigation.navigate(AppRoutes.TERMS_SCREEN);
   };
@@ -43,7 +47,9 @@ export function LoginScreen() {
             value={password}
           />
         </View>
-        <Button mode="contained">Login</Button>
+        <Button mode="contained" onPress={handleLoginTap}>
+          Login
+        </Button>
         <Pressable onPress={handleTermsTap}>
           <Text style={styles.termsLink}>Terms and conditions</Text>
         </Pressable>

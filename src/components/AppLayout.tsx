@@ -10,7 +10,7 @@ type Props = {
 
 export const AppLayout: React.FC<Props> = ({ children, title }) => {
   const isConnected = useIsConnected();
-  if (isConnected) {
+  if (!isConnected) {
     return <Offline />;
   }
 

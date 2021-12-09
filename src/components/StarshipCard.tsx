@@ -1,16 +1,14 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Button, Card, Paragraph, Title } from "react-native-paper";
+import type { Starship } from "../hooks/useStarships";
 
 type Props = {
-  starship: Record<
-    "name" | "model" | "crew" | "hyperdrive_rating" | "cost_in_credits",
-    string | number | undefined
-  >;
-};
-export const StarshipCard: React.FC<Props> = ({ starship }) => {
+  starship: Starship;
+} & Partial<React.ComponentProps<typeof Card>>;
+export const StarshipCard: React.FC<Props> = ({ starship, ...props }) => {
   return (
-    <Card style={styles.card}>
+    <Card style={styles.card} {...props}>
       <Card.Title title={starship.name} subtitle={starship.model} />
       <Card.Content>
         <Paragraph>Crew: {starship.crew}</Paragraph>
